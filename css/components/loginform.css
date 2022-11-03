@@ -1,0 +1,27 @@
+.login-form {
+  margin: 10px;
+  display: flex;
+}
+.login-form input {
+  background-color: rgba(240, 248, 255, 0);
+  border: 0;
+  width: 150px;
+  height: 30px;
+  outline: none;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-family: "Nanum Brush Script", cursive;
+}
+
+.login-form input::placeholder {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+.login-form button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: 20px;
+}

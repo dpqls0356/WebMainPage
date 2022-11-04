@@ -70,8 +70,10 @@ function onClickAddUserBtnHandler(event) {
   event.preventDefault();
   console.log(newname);
   if (findUser(newname)) {
-    alert("이미 존재하는 이름");
-    addUserFormName = "";
+    document
+      .querySelector(".duplicate-notifications")
+      .classList.remove("hidden");
+    addUserFormName.value = "";
   } else {
     const newUser = { name: newname };
     usernamearray.push(newUser);
@@ -81,6 +83,7 @@ function onClickAddUserBtnHandler(event) {
     loginError.classList.add(HIDDEN_CLASS);
     printHelloHeader(newUser.name);
     setOwnerAndToDo(newname);
+    document.querySelector(".duplicate-notifications").classList.add("hidden");
   }
 }
 // 유저생성 - 로컬저장소에 저장

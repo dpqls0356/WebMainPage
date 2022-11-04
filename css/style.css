@@ -7,8 +7,11 @@
 @import "components/clock.css";
 @import "components/userinfo.css";
 @import "components/todolist.css";
+:root {
+  --basic-font: "Nanum Brush Script", cursive;
+}
 body {
-  font-family: "Nanum Brush Script", cursive;
+  font-family: var(--basic-font);
   width: 100vw;
   height: 100vh;
   display: flex;

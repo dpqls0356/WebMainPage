@@ -62,6 +62,7 @@ function randomquote() {
 }
 
 randomquote();
+setInterval(randomquote, 30000);
 
 // round() - 반올림 함수
 // ceil() - 1.0을 제외한 1.1~1.9는 2를 반환

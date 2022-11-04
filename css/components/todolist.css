@@ -27,12 +27,12 @@
   border-radius: 10px;
   color: rgb(255, 255, 255);
   text-align: center;
-  font-family: "Nanum Brush Script", cursive;
+  font-family: var(--basic-font);
   font-size: 20px;
 }
 .todo-form input::placeholder {
   color: rgb(255, 255, 255);
-  font-family: "Nanum Brush Script", cursive;
+  font-family: var(--basic-font);
   font-size: 20px;
 }
 .todo-list {

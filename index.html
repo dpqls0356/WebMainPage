@@ -10,7 +10,18 @@
   <body>
     <div class="background-op"></div>
     <h2 class="clock">00:00:00</h2>
-    <form class="login-form hidden">
+    <div class="login-error hidden">
+      <span>존재하지않는 사용자입니다</span>
+      <div>
+        <button class="add-user">new user</button>
+        <button class="retry-login">retry</button>
+      </div>
+    </div>
+    <form class="login-form">
+      <input type="text" placeholder="Who are u?" />
+      <button>❤️</button>
+    </form>
+    <form class="add-user-form hidden">
       <input type="text" placeholder="Who are u?" />
       <button>❤️</button>
     </form>
@@ -35,5 +46,6 @@
     <script src="js/background.js"></script>
     <script src="js/todo.js"></script>
     <script src="js/weather.js"></script>
+    <script src="js/remakingtodo.js"></script>
   </body>
 </html>

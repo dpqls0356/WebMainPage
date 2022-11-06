@@ -10,6 +10,7 @@ let toDos = [];
 function setOwnerAndToDo(username) {
   TODOKEY = username;
   const savedTodo = localStorage.getItem(TODOKEY);
+  console.log(savedTodo);
   if (savedTodo !== null) {
     const parseTodos = JSON.parse(savedTodo);
     parseTodos.forEach(paintTodo);
@@ -24,6 +25,7 @@ function savedTodos() {
   // 저장시 배열을 단순 텍스트가 아닌 String으로 저장하고싶을 때 - JSON.stringify()해주기
   // 안해줄경우 a,b,c로 배열 저장이 되지만 해줄 경우 "["a","b","c"]"로 저장된다.
   ////////////// 왜 하는가 -> 정리하기!  ///////////////////
+
   localStorage.setItem(TODOKEY, JSON.stringify(toDos));
   // JSON.stringify([1,2,3,4]) -> "[1,2,3,4]"
   // JSON.parse("[1,2,3,4]") -> [1,2,3,4]로 배열로 출력!
@@ -35,9 +37,10 @@ function onTodoInputHandler(event) {
   event.preventDefault();
   const newTodo = todoInput.value;
   // id가 있는 이유  : 버튼의 번호라고 생각하귀~
-  const newTodoObject = { id: Date.now(), text: newTodo };
+  const newTodoObject = { class: "white-heart", id: Date.now(), text: newTodo };
   todoInput.value = "";
   toDos.push(newTodoObject);
+  console.log(newTodoObject);
   savedTodos();
   paintTodo(newTodoObject);
 }
@@ -53,7 +56,12 @@ function paintTodo(newTodoObject) {
   //
   box.classList.add("checkbox-span");
   //
-  checkboxLabel.innerHTML = "🤍";
+  if (newTodoObject.class == "white-heart") {
+    checkboxLabel.innerHTML = "🤍";
+  } else {
+    checkboxLabel.innerHTML = "💛";
+  }
+
   // label이 클릭될때마다 함수 실행
   checkboxLabel.addEventListener("click", onClickCheckBoxHandler);
   //
@@ -87,11 +95,21 @@ function onListRemoveHandler(event) {
 }
 
 // 체크박스 색상 변경
+// li의 아이디를 가져와  todolist 배열의 id와 대조하여 일치하는 배열의 class명을 바꿔 체크박스 변경
 function onClickCheckBoxHandler(event) {
   const checkbox = event.target;
-  if (checkbox.innerHTML === "🤍") {
-    checkbox.innerHTML = "💛";
-  } else {
-    checkbox.innerHTML = "🤍";
+  const checkboxid = event.target.parentElement.parentElement.id;
+  for (var i = 0; i < toDos.length; i++) {
+    console.log(i);
+    if (parseInt(toDos[i].id) === parseInt(checkboxid)) {
+      if (toDos[i].class === "white-heart") {
+        toDos[i].class = "yellow-heart";
+        checkbox.innerHTML = "💛";
+      } else {
+        toDos[i].class = "white-heart";
+        checkbox.innerHTML = "🤍";
+      }
+    }
   }
+  savedTodos(toDos);
 }

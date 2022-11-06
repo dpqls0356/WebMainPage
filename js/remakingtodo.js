@@ -46,14 +46,27 @@ function onTodoInputHandler(event) {
 function paintTodo(newTodoObject) {
   const list = document.createElement("li");
   list.id = newTodoObject.id;
+  const box = document.createElement("div");
+  const checkboxLabel = document.createElement("label");
   const span = document.createElement("span");
   const btn = document.createElement("button");
-  btn.innerHTML = "❤️";
+  //
+  box.classList.add("checkbox-span");
+  //
+  checkboxLabel.innerHTML = "🤍";
+  // label이 클릭될때마다 함수 실행
+  checkboxLabel.addEventListener("click", onClickCheckBoxHandler);
+  //
+  btn.innerHTML = "ⅹ";
+  //
   span.innerHTML = newTodoObject.text;
   //  버튼에 삭제 이벤트 걸어주기
   btn.addEventListener("click", onListRemoveHandler);
   //  append()는 어떤 요소든 추가가되지만 appendChild()는 객체만 가능!
-  list.appendChild(span);
+
+  box.appendChild(checkboxLabel);
+  box.appendChild(span);
+  list.appendChild(box);
   list.appendChild(btn);
   todoList.append(list);
 }
@@ -71,4 +84,14 @@ function onListRemoveHandler(event) {
   /////////////흠 왜 toDo.id의 값은 number이고 dellist의 id는 String일까?///////////////
   toDos = toDos.filter((toDo) => toDo.id !== dellistid);
   savedTodos();
+}
+
+// 체크박스 색상 변경
+function onClickCheckBoxHandler(event) {
+  const checkbox = event.target;
+  if (checkbox.innerHTML === "🤍") {
+    checkbox.innerHTML = "💛";
+  } else {
+    checkbox.innerHTML = "🤍";
+  }
 }

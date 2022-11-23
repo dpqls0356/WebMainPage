@@ -1,4 +1,4 @@
-const API_KEY = "00ff901cb628b8520281869397f5a0ea";
+const API_KEY = "";
 // 브라우저에서 위치를 줌!
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
 

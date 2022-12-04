@@ -17,6 +17,7 @@ const quotes = [
       "너무 소심하고 까다롭게 자신의 행동을 고민하지 말라.<br>모든 인생은 실험이다.<br>더많이 실험할수록 더나아진다",
     author: "랄프 왈도 에머슨",
   },
+  {
     quote: "한번의 실패와 영원한 실패를 혼동하지 마라.",
     author: "F.스콧 핏제랄드",
   },
@@ -59,7 +60,7 @@ setInterval(printRandomQuote, 5000);
 
 function printRandomQuote() {
   const quotenumber = parseInt(Math.random() * quotes.length);
-  console.log(quotenumber);
+
   quotebox.innerHTML = `" ${quotes[quotenumber].quote} "`;
   personbox.innerHTML = `- ${quotes[quotenumber].author} -`;
 }

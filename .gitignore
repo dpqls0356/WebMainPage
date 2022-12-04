@@ -1,7 +1,6 @@
 
 img/.DS_Store
 .gitattributes
-js/weather.js
-js/todo.js
-/version1
+# js/weather.js
+# js/todo.js
 *.txt

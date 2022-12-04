@@ -3,3 +3,4 @@ img/.DS_Store
 .gitattributes
 js/weather.js
 js/todo.js
+*.txt

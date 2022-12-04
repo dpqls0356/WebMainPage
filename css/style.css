@@ -1,3 +1,15 @@
+body {
+  margin: 0;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+}
 .hidden {
   display: none;
+}
+
+.background {
+  z-index: -999;
+  width: 100vw;
+  height: 100vh;
 }

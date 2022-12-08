@@ -13,7 +13,6 @@ if (savedTodos !== null) {
 }
 function loadTodolist(savedTodos) {
   const parseTodos = JSON.parse(savedTodos);
-  console.log(parseTodos);
   parseTodos.forEach(paintTodo);
   toDos = parseTodos;
 }
@@ -52,19 +51,22 @@ function deleteTodo(event) {
   const deleteLi = event.target.parentElement;
   const deleteTodoId = event.target.parentElement.id;
   deleteLi.remove();
-  toDos = returnReviseTodos(deleteTodoId);
+  // toDos = returnReviseTodos(deleteTodoId);
+  toDos = toDos.filter((item) => item.id !== parseInt(deleteTodoId));
+  console.log(toDos);
   saveTodolist(toDos);
 }
 
-function returnReviseTodos(id) {
-  var returnArray = [];
-  for (var i = 0; i < toDos.length; i++) {
-    if (parseInt(id) !== toDos[i].id) {
-      returnArray.push(toDos[i]);
-    }
-  }
-  return returnArray;
-}
+// function returnReviseTodos(id) {
+//   var returnArray = [];
+//   for (var i = 0; i < toDos.length; i++) {
+//     if (parseInt(id) !== toDos[i].id) {
+//       returnArray.push(toDos[i]);
+//     }
+//   }
+//   return returnArray;
+// }
+
 //Todo localStorage에 저장
 function saveTodolist(saveToDos) {
   localStorage.setItem("todos", JSON.stringify(saveToDos));

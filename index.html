@@ -12,15 +12,37 @@
     <div class="clock">
       <div>00:00:00</div>
     </div>
-    <form class="login-form hidden">
-      <input class="input-name" type="text" placeholder="What's ur name?" />
+    <div class="hidden first-user">
+      U are the first user ! Please sign up first !
+    </div>
+    <form class="login-form">
+      <div class="cant-find-notice hidden">We cant find U...</div>
+      <input class="input-id" type="text" placeholder="What's ur ID?" />
       <input
         class="input-passwd"
         type="password"
         placeholder="What's ur passwd"
       />
-      <button class="login-button">Log In</button>
+      <div>
+        <button class="login-button">Log In</button>
+        <button class="create-accounting-button">New</button>
+      </div>
     </form>
+    <form class="create-accunting hidden">
+      <div class="hidden duplication-id-notice">중복된 아이디입니다.</div>
+      <input class="input-name" type="text" placeholder="What's ur name?" />
+      <input class="input-id" type="text" placeholder="What's ur ID?" />
+      <input
+        class="input-passwd"
+        type="password"
+        placeholder="What's ur passwd"
+      />
+      <button class="create-btn">create</button>
+    </form>
+    <div class="hidden success-create">
+      <div>새로 가입되었습니다 !</div>
+      <button class="return-loginform">back to the login</button>
+    </div>
     <h1 class="welcomemgs hidden"></h1>
     <div class="quote">
       <div></div>
@@ -39,7 +61,7 @@
     </form>
     <div class="weather"></div>
     <script src="/js/background.js"></script>
-    <script src="/js/weather.js"></script>
+    <!-- <script src="/js/weather.js"></script> -->
     <script src="/js/quote.js"></script>
     <script src="/js/login.js"></script>
     <script src="/js/clock.js"></script>

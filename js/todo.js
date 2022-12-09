@@ -9,7 +9,6 @@ if (savedTodos !== null) {
   console.log("access");
   loadTodolist(savedTodos);
 } else {
-  alert("can't find todo!");
 }
 function loadTodolist(savedTodos) {
   const parseTodos = JSON.parse(savedTodos);

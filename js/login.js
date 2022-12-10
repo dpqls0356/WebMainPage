@@ -20,56 +20,57 @@ var username;
 var userpasswd;
 const welcomemessage = document.querySelector(".welcomemgs");
 const HIDDENCLASS = "hidden";
-
-//user정보확인
-// saveduserArray = localStorage.getItem("user");
-// if (saveduserArray === null) {
-//   document.querySelector(".first-user").classList.remove(HIDDENCLASS);
-//   loginform.classList.add(HIDDENCLASS);
-//   createAccountingForm.classList.remove(HIDDENCLASS);
-// } else {
-//   userArray = JSON.parse(saveduserArray);
-// }
+//로그인 문제 알림창
+const passwdDoesntMatchNotice = document.querySelector(
+  ".passwd-doesnt-match-notice"
+);
+const cantFindNotice = document.querySelector(".cant-find-notice");
 
 //저장된 유저정보 가져오기
 saveduserArray = localStorage.getItem("user");
 if (saveduserArray !== null) {
   userArray = JSON.parse(saveduserArray);
 }
+console.log(userArray);
 //로그인 버튼을 누른 경우
 loginbtn.addEventListener("click", handleLoginClick);
 function handleLoginClick(event) {
+  passwdDoesntMatchNotice.classList.add(HIDDENCLASS);
+  cantFindNotice.classList.add(HIDDENCLASS);
   event.preventDefault();
   userid = userinputid.value;
   userpasswd = userinputpasswd.value;
   //id와 passwd일치 확인하기
-  if (userArray === null) {
-    document
-      .querySelector(".login-form .cant-find-notice")
-      .classList.remove(HIDDENCLASS);
+  userinfo = userFind();
+  printLoginresult(userinfo);
+}
+function userFind() {
+  for (var i = 0; i < userArray.length; i++) {
+    if (userArray[i].ID === userid && userArray[i].passwd === userpasswd) {
+      return userArray[i];
+    } else if (
+      userArray[i].ID === userid &&
+      userArray[i].passwd !== userpasswd
+    ) {
+      return "notuserpasswd";
+    }
+  }
+  return "notuser";
+}
+function printLoginresult(printuserinfo) {
+  if (printuserinfo === "notuserpasswd") {
+    passwdDoesntMatchNotice.classList.remove(HIDDENCLASS);
+    userinputid.value = "";
+    userinputpasswd.value = "";
+  } else if (printuserinfo === "notuser") {
+    cantFindNotice.classList.remove(HIDDENCLASS);
     userinputid.value = "";
     userinputpasswd.value = "";
   } else {
-    userinfo = userArray.filter((item) => {
-      if (item.ID === userid && item.passwd === userpasswd) {
-        return item;
-      }
-    });
-    if (userinfo.length != 0) {
-      document
-        .querySelector(".login-form .cant-find-notice")
-        .classList.add(HIDDENCLASS);
-      printWelcomMessage(userinfo);
-    } else {
-      document
-        .querySelector(".login-form .cant-find-notice")
-        .classList.remove(HIDDENCLASS);
-      userinputid.value = "";
-      userinputpasswd.value = "";
-    }
+    printWelcomMessage(printuserinfo);
   }
 }
-//
+
 createAccountingbtn.addEventListener("click", handleCreateClick);
 //계정만들기 버튼을 누른 경우
 function handleCreateClick(event) {
@@ -88,13 +89,13 @@ function handlerCreateBtn(event) {
     ID: newUserInputId.value,
     passwd: newUserInputPasswd.value,
   };
-  if (userArray === null) {
+  console.log(userArray);
+  if (userArray.length === 0) {
     console.log("null");
     successCreateAccounting(newUserInfo);
   } else {
     const checkobject = userArray.filter((item) => item.ID === newUserInfo.ID);
     if (checkobject.length === 0) {
-      console.log("not null");
       //추가되었다는 창 보여주기 + 로그인으로 돌아가는 버튼
       successCreateAccounting(newUserInfo);
     } else {
@@ -115,6 +116,7 @@ function successCreateAccounting(saveUserInfo) {
     .querySelector(".return-loginform")
     .addEventListener("click", handlerReturnLoginForm);
   userArray.push(saveUserInfo);
+  console.log(userArray);
   savedUserInfo();
 }
 function handlerReturnLoginForm() {
@@ -123,16 +125,14 @@ function handlerReturnLoginForm() {
 }
 //유저명과 환영인사 출력
 function printWelcomMessage(hellouser) {
-  console.log(hellouser);
-  document
-    .querySelector(".login-form .cant-find-notice")
-    .classList.add(HIDDENCLASS);
   document.querySelector(".duplication-id-notice").classList.add(HIDDENCLASS);
   loginform.classList.add(HIDDENCLASS);
   welcomemessage.classList.remove(HIDDENCLASS);
-  welcomemessage.textContent = `Hello ${hellouser[0].name}!`;
+  welcomemessage.textContent = `Hello ${hellouser.name}!`;
 }
 
 function savedUserInfo() {
   localStorage.setItem("user", JSON.stringify(userArray));
 }
+
+//아이디가 다른 지 비번이 다른 지 확인하기

@@ -12,13 +12,19 @@
     <div class="clock">
       <div>00:00:00</div>
     </div>
-    <div class="hidden first-user">
-      U are the first user ! Please sign up first !
-    </div>
     <form class="login-form">
       <div class="cant-find-notice hidden">We cant find U...</div>
-      <input class="input-id" type="text" placeholder="What's ur ID?" />
+      <div class="passwd-doesnt-match-notice hidden">
+        The password doesn't match.
+      </div>
       <input
+        class="input-id"
+        type="text"
+        required
+        placeholder="What's ur ID?"
+      />
+      <input
+        required
         class="input-passwd"
         type="password"
         placeholder="What's ur passwd"
@@ -30,9 +36,20 @@
     </form>
     <form class="create-accunting hidden">
       <div class="hidden duplication-id-notice">중복된 아이디입니다.</div>
-      <input class="input-name" type="text" placeholder="What's ur name?" />
-      <input class="input-id" type="text" placeholder="What's ur ID?" />
       <input
+        required
+        class="input-name"
+        type="text"
+        placeholder="What's ur name?"
+      />
+      <input
+        required
+        class="input-id"
+        type="text"
+        placeholder="What's ur ID?"
+      />
+      <input
+        required
         class="input-passwd"
         type="password"
         placeholder="What's ur passwd"

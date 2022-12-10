@@ -110,6 +110,8 @@ function handlerCreateBtn(event) {
   }
 }
 function successCreateAccounting(saveUserInfo) {
+  passwdDoesntMatchNotice.classList.add(HIDDENCLASS);
+  cantFindNotice.classList.add(HIDDENCLASS);
   createAccountingForm.classList.add(HIDDENCLASS);
   document.querySelector(".success-create").classList.remove(HIDDENCLASS);
   document
@@ -123,12 +125,13 @@ function handlerReturnLoginForm() {
   document.querySelector(".success-create").classList.add(HIDDENCLASS);
   loginform.classList.remove(HIDDENCLASS);
 }
-//유저명과 환영인사 출력
+//유저명과 환영인사 출력 + 해당 유저의 todolist 불러오기
 function printWelcomMessage(hellouser) {
   document.querySelector(".duplication-id-notice").classList.add(HIDDENCLASS);
   loginform.classList.add(HIDDENCLASS);
   welcomemessage.classList.remove(HIDDENCLASS);
   welcomemessage.textContent = `Hello ${hellouser.name}!`;
+  loadUsersTodoList();
 }
 
 function savedUserInfo() {

@@ -2,20 +2,17 @@ const todolistSaveBtn = document.querySelector(".save-todo");
 const userInputTodo = document.querySelector(".input-todo input");
 const todolist = document.querySelector(".todo-list");
 let toDos = [];
-
-//새로고침시 저장된 투두 보이도록 함
-const savedTodos = localStorage.getItem("todos");
-if (savedTodos !== null) {
-  console.log("access");
-  loadTodolist(savedTodos);
-} else {
+const todobox = document.querySelector(".todo");
+//로그인시 todolist 가져오기 -> 투두가 하나라도 있는 경우
+function loadUsersTodoList() {
+  todobox.classList.remove(HIDDENCLASS);
+  const savedTodos = localStorage.getItem(userid);
+  if (savedTodos !== null) {
+    const parseTodos = JSON.parse(savedTodos);
+    parseTodos.forEach(paintTodo);
+    toDos = parseTodos;
+  }
 }
-function loadTodolist(savedTodos) {
-  const parseTodos = JSON.parse(savedTodos);
-  parseTodos.forEach(paintTodo);
-  toDos = parseTodos;
-}
-
 //투두 입력 버튼 이벤트
 todolistSaveBtn.addEventListener("click", handlerTodolistSaveBtn);
 function handlerTodolistSaveBtn(event) {
@@ -68,5 +65,5 @@ function deleteTodo(event) {
 
 //Todo localStorage에 저장
 function saveTodolist(saveToDos) {
-  localStorage.setItem("todos", JSON.stringify(saveToDos));
+  localStorage.setItem(userid, JSON.stringify(saveToDos));
 }

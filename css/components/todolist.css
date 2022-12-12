@@ -1,0 +1,74 @@
+/* 투두리스트에 값을 추가하면 박스 자체가 위로 올라가는 현상이 발생했는데 
+이는 todo-list의 높이를 지정 안해줘서 todo의 전체적인 크기가 증가함에 따라 이동했던 것.. */
+.todo {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 5%;
+  bottom: 7%;
+}
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+.todo-form > span {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.todo-form input {
+  width: 200px;
+  height: 20px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.357);
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-family: var(--basic-font);
+  font-size: 20px;
+}
+.todo-form input::placeholder {
+  color: rgb(255, 255, 255);
+  font-family: var(--basic-font);
+  font-size: 20px;
+}
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  height: 150px;
+  overflow: scroll;
+}
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  width: 224px;
+  font-size: 20px;
+  margin-top: 10px;
+  /* height: 40px; */
+}
+
+.todo-list li div span {
+  padding-left: 10px;
+  /* white-space: pre-line; */
+}
+.todo-list li button {
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  color: white;
+  font-size: 20px;
+}
+.checkbox-span {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-span label {
+  display: block;
+  font-size: 13px;
+}

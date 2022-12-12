@@ -4,66 +4,84 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>yebeen's homepage</title>
-    <link rel="shortcut icon" size="50x50x50" href="img/haert.jpeg" />
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+    <link href="/css/style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="background-op"></div>
-    <h2 class="clock">00:00:00</h2>
-    <div class="login-error hidden">
-      <span>존재하지않는 사용자입니다</span>
-      <div>
-        <button class="add-user">new user</button>
-        <button class="retry-login">retry</button>
-      </div>
+    <div class="background"></div>
+    <div class="clock">
+      <div>00:00:00</div>
     </div>
     <form class="login-form">
-      <input type="text" placeholder="Who are u?" />
-      <button>❤️</button>
-    </form>
-    <form class="add-user-form hidden">
-      <div class="duplicate-notifications hidden">
-        <div>이미 존재하는 이름입니다.</div>
-        <div>다른 이름을 입력해주세요!</div>
+      <div class="cant-find-notice hidden">We cant find U...</div>
+      <div class="passwd-doesnt-match-notice hidden">
+        The password doesn't match.
       </div>
+      <input
+        class="input-id"
+        type="text"
+        required
+        placeholder="What's ur ID?"
+      />
+      <input
+        required
+        class="input-passwd"
+        type="password"
+        placeholder="What's ur passwd"
+      />
       <div>
+        <button class="login-button">Log In</button>
+        <button class="create-accounting-button">New</button>
+      </div>
+    </form>
+    <form class="create-accunting hidden">
+      <div class="hidden duplication-id-notice">중복된 아이디입니다.</div>
+      <input
+        required
+        class="input-name"
+        type="text"
+        placeholder="What's ur name?"
+      />
+      <input
+        required
+        class="input-id"
+        type="text"
+        placeholder="What's ur ID?"
+      />
+      <input
+        required
+        class="input-passwd"
+        type="password"
+        placeholder="What's ur passwd"
+      />
+      <button class="create-btn">create</button>
+    </form>
+    <div class="hidden success-create">
+      <div>새로 가입되었습니다 !</div>
+      <button class="return-loginform">back to the login</button>
+    </div>
+    <h1 class="welcomemgs hidden"></h1>
+    <div class="quote">
+      <div></div>
+      <div></div>
+    </div>
+    <form class="todo hidden">
+      <div class="input-todo">
         <input
           type="text"
-          placeholder="
-        hello, new User! What's Your name?"
+          placeholder="Write a ToDo and Press Button"
+          required
         />
-        <button>❤️</button>
+        <button class="save-todo"></button>
       </div>
-    </form>
-    <h1 class="hello-header hidden"></h1>
-    <a class="google-link" target="_blank" href="https://www.google.co.kr/"
-      >[ go google button ]</a
-    >
-    <div class="todo hidden">
-      <form class="todo-form">
-        <span>Your ToDo List</span>
-        <input required class="todo-form-input" type="text" placeholder="add" />
-      </form>
       <ul class="todo-list"></ul>
-    </div>
-    <div class="quote">
-      <span></span>
-      <span></span>
-    </div>
-    <div class="weather-box"></div>
-    <!-- <script src="js/app.js"></script> -->
-    <script src="js/greetings.js"></script>
-    <script src="js/clock.js"></script>
-    <script src="js/quotes.js"></script>
-    <script src="js/background.js"></script>
-    <!-- <script src="js/todo.js"></script> -->
-    <script src="js/weather.js"></script>
-    <script src="js/remakingtodo.js"></script>
+    </form>
+    <div class="weather"></div>
+    <script src="/js/background.js"></script>
+    <!-- <script src="/js/weather.js"></script> -->
+    <script src="/js/quote.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/clock.js"></script>
+    <script src="/js/todo.js"></script>
   </body>
 </html>
-
-<!-- 추가 및 수정 사항 -->
-<!-- 재로그인 및 추가 레이아웃 변경하기 / 완료 -->
-<!-- 존재하는 사용자입니다 alert 말고 다르게 디자인 / 완료-->
-<!-- 구글 검색창으로 이동하는 링크 추가 -->

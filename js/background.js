@@ -1,12 +1,12 @@
-const images = ["0.jpeg", "1.jpeg", "2.jpeg"];
-function setBackground() {
-  const chosenImage = parseInt(Math.random() * images.length);
+const backgroundbox = document.querySelector(".background");
+const backgroundimg = document.createElement("img");
+const imgcount = 5;
 
-  const bgImage = document.createElement("img");
-  bgImage.src = `img/${images[chosenImage]}`;
+changeBackgroudImg();
+setInterval(changeBackgroudImg, 10000);
+function changeBackgroudImg() {
+  const backgroundimgnumber = parseInt(Math.random() * imgcount + 1);
+  backgroundimg.src = `/img/background${backgroundimgnumber}.jpg`;
 
-  document.body.appendChild(bgImage);
-  bgImage.classList.add("background-Img");
+  backgroundbox.appendChild(backgroundimg);
 }
-setBackground();
-// setInterval(setBackground, 3000);

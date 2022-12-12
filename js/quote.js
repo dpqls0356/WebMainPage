@@ -52,18 +52,15 @@ const quotes = [
   },
 ];
 
-const quote = document.querySelector(".quote span:first-child");
-const author = document.querySelector(".quote span:last-child");
+const quotebox = document.querySelector(".quote div:nth-child(1)");
+const personbox = document.querySelector(".quote div:nth-child(2)");
 
-function randomquote() {
-  const number = parseInt(Math.random() * quotes.length);
-  quote.innerHTML = quotes[number].quote;
-  author.innerHTML = quotes[number].author;
+printRandomQuote();
+setInterval(printRandomQuote, 5000);
+
+function printRandomQuote() {
+  const quotenumber = parseInt(Math.random() * quotes.length);
+
+  quotebox.innerHTML = `" ${quotes[quotenumber].quote} "`;
+  personbox.innerHTML = `- ${quotes[quotenumber].author} -`;
 }
-
-randomquote();
-setInterval(randomquote, 30000);
-
-// round() - 반올림 함수
-// ceil() - 1.0을 제외한 1.1~1.9는 2를 반환
-// floor() - 1.0~1.9999는 전부 1로 반환

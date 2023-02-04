@@ -25,12 +25,12 @@ const passwdDoesntMatchNotice = document.querySelector(
   ".passwd-doesnt-match-notice"
 );
 const cantFindNotice = document.querySelector(".cant-find-notice");
-
 //저장된 유저정보 가져오기
 saveduserArray = localStorage.getItem("user");
 if (saveduserArray !== null) {
   userArray = JSON.parse(saveduserArray);
 }
+
 console.log(userArray);
 //로그인 버튼을 누른 경우
 loginbtn.addEventListener("click", handleLoginClick);
@@ -75,6 +75,8 @@ createAccountingbtn.addEventListener("click", handleCreateClick);
 //계정만들기 버튼을 누른 경우
 function handleCreateClick(event) {
   event.preventDefault();
+  passwdDoesntMatchNotice.classList.add(HIDDENCLASS);
+  cantFindNotice.classList.add(HIDDENCLASS);
   loginform.classList.add(HIDDENCLASS);
   createAccountingForm.classList.remove(HIDDENCLASS);
 }

@@ -122,6 +122,10 @@ input[type="password"]::placeholder {
 .success-create > div:first-child {
   text-align: center;
 }
+/* 환영메세지 */
+.welcomemgs {
+  font-size: 30px;
+}
 /*  */
 .hidden {
   display: none;

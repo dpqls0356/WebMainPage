@@ -8,6 +8,7 @@
     <link href="/css/style.css" rel="stylesheet" />
   </head>
   <body>
+    <div class="main-part">
     <div></div>
     <div class="background"></div>
     <div class="clock">
@@ -70,23 +71,29 @@
       <div></div>
       <div></div>
     </div>
-    <form class="todo hidden">
-      <div class="input-todo">
-        <input
-          type="text"
-          placeholder="Write a ToDo and Press Button"
-          required
-        />
-        <button class="save-todo"></button>
+    <button class="more-info-btn hidden">Click to see more information!</button>
+    </div>
+      <div class="more-info hidden">
+        <button class="more-info-close-btn">X</button>
+        <div class="weather"></div>
+        <form class="todo hidden">
+          <div class="input-todo">
+            <input
+              type="text"
+              placeholder="Write a ToDo and Press Button"
+            />
+            <button class="save-todo"></button>
+          </div>
+          </form>
+        <ul class="todo-list"></ul>
       </div>
-      <ul class="todo-list"></ul>
     </form>
-    <div class="weather"></div>
     <script src="/js/background.js"></script>
     <!-- <script src="/js/weather.js"></script> -->
     <script src="/js/quote.js"></script>
     <script src="/js/login.js"></script>
     <script src="/js/clock.js"></script>
     <script src="/js/todo.js"></script>
+    <script src="/js/moreinfo.js"></script>
   </body>
 </html>

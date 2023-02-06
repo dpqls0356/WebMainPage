@@ -129,6 +129,7 @@ function handlerReturnLoginForm() {
 }
 //유저명과 환영인사 출력 + 해당 유저의 todolist 불러오기
 function printWelcomMessage(hellouser) {
+  document.querySelector(".more-info-btn").classList.remove(HIDDENCLASS);
   document.querySelector(".duplication-id-notice").classList.add(HIDDENCLASS);
   loginform.classList.add(HIDDENCLASS);
   welcomemessage.classList.remove(HIDDENCLASS);

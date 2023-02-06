@@ -2,20 +2,25 @@
 * {
   color: white;
 }
+body {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
 button,
 input {
   all: unset;
 }
-body {
+.main-part {
   margin: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-body > div:first-child {
+.main-part > div:first-child {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.367);
   z-index: -98;
@@ -137,4 +142,35 @@ input[type="password"]::placeholder {
 .success-create > div:first-child {
   font-size: 18px;
   margin-bottom: 10px;
+}
+/* 버튼 */
+.save-todo {
+  height: 50px;
+  width: 200px;
+  background-color: rgb(255, 80, 109);
+}
+.more-info-btn {
+  margin-top: 30px;
+  font-size: 20px;
+  animation: moveupdown 1s linear infinite;
+}
+
+@keyframes moveupdown {
+  25% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* moreinfo */
+.more-info {
+  background-color: rgb(0, 0, 0);
+  width: 30%;
 }

@@ -32,7 +32,7 @@ function paintTodo(todoElement) {
   const todoElementDiv = document.createElement("div");
   const todoElementBtn = document.createElement("button");
   todoElementDiv.innerHTML = `${todoElement.todo}`;
-  todoElementBtn.innerHTML = "❤️";
+  todoElementBtn.innerHTML = "X";
   todoElementLi.id = todoElement.id;
   todoElementBtn.classList.add("delete-btn");
   //여기서 삭제에 대한 리스너를 추가해줘야함

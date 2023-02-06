@@ -43,6 +43,11 @@
   height: 150px;
   overflow: scroll;
 }
+
+.todo-list::-webkit-scrollbar {
+  display: none;
+}
+
 .todo-list li {
   display: flex;
   justify-content: space-between;

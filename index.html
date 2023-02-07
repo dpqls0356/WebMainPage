@@ -8,80 +8,122 @@
     <link href="/css/style.css" rel="stylesheet" />
   </head>
   <body>
+    <div></div>
     <div class="background"></div>
-    <div class="clock">
-      <div>00:00:00</div>
-    </div>
-    <form class="login-form">
-      <div class="cant-find-notice hidden">We cant find U...</div>
-      <div class="passwd-doesnt-match-notice hidden">
-        The password doesn't match.
+    <div class="main-part">
+      <div class="clock">
+        <div>00:00:00</div>
       </div>
-      <input
-        class="input-id"
-        type="text"
-        required
-        placeholder="What's ur ID?"
-      />
-      <input
-        required
-        class="input-passwd"
-        type="password"
-        placeholder="What's ur passwd"
-      />
-      <div>
-        <button class="login-button">Log In</button>
-        <button class="create-accounting-button">New</button>
+      <form class="login-form hidden">
+        <div class="cant-find-notice hidden">We cant find U...🥲</div>
+        <div class="passwd-doesnt-match-notice hidden">
+          The password doesn't match🥺
+        </div>
+        <div>
+          <input
+            class="input-id"
+            type="text"
+            required
+            placeholder="What's ur ID?"
+          />
+          <input
+            required
+            class="input-passwd"
+            type="password"
+            placeholder="What's ur Password"
+          />
+        </div>
+        <div>
+          <button class="login-button">Log In</button>
+          <button class="create-accounting-button">New</button>
+        </div>
+      </form>
+      <form class="create-accunting hidden">
+        <div class="hidden duplication-id-notice">
+          중복된 아이디입니다&nbsp🥺
+        </div>
+        <div>
+          <input
+            required
+            class="input-name"
+            type="text"
+            placeholder="What's ur name?"
+          />
+          <input
+            required
+            class="input-id"
+            type="text"
+            placeholder="What's ur ID?"
+          />
+          <input
+            required
+            class="input-passwd"
+            type="password"
+            placeholder="What's ur password?"
+          />
+        </div>
+        <button class="create-btn">create</button>
+      </form>
+      <div class="hidden success-create">
+        <div>[ 새로 가입되었습니다 👏🏻 ]</div>
+        <button class="return-loginform">back to the login</button>
       </div>
-    </form>
-    <form class="create-accunting hidden">
-      <div class="hidden duplication-id-notice">중복된 아이디입니다.</div>
-      <input
-        required
-        class="input-name"
-        type="text"
-        placeholder="What's ur name?"
-      />
-      <input
-        required
-        class="input-id"
-        type="text"
-        placeholder="What's ur ID?"
-      />
-      <input
-        required
-        class="input-passwd"
-        type="password"
-        placeholder="What's ur passwd"
-      />
-      <button class="create-btn">create</button>
-    </form>
-    <div class="hidden success-create">
-      <div>새로 가입되었습니다 !</div>
-      <button class="return-loginform">back to the login</button>
-    </div>
-    <h1 class="welcomemgs hidden"></h1>
-    <div class="quote">
-      <div></div>
-      <div></div>
-    </div>
-    <form class="todo hidden">
-      <div class="input-todo">
-        <input
-          type="text"
-          placeholder="Write a ToDo and Press Button"
-          required
-        />
-        <button class="save-todo"></button>
+      <h1 class="welcomemgs hidden"></h1>
+      <div class="quote">
+        <div></div>
+        <div></div>
       </div>
-      <ul class="todo-list"></ul>
-    </form>
-    <div class="weather"></div>
+      <button class="more-info-btn hidden">
+        Click to see more information!
+      </button>
+    </div>
+    <div class="more-info hidden">
+      <button class="more-info-close-btn">X</button>
+      <div class="weather"></div>
+      <div class="shortcut">
+        <p>Shortcut</p>
+        <ul>
+          <li>
+            <div>
+              <a href="https://www.google.com/">Google</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <a href="https://yebeen-study-note.tistory.com/">My TStory</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <a href="https://nomadcoders.co/">Nomad Coder</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <a href="https://www.acmicpc.net/">BaekJoon</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="todo-box">
+        <form class="todo hidden">
+          <p>ToDo</p>
+          <div class="input-todo">
+            <input type="text" placeholder="Write a ToDo" />
+            <button class="save-todo">﹢</button>
+          </div>
+        </form>
+        <ul class="todo-list"></ul>
+      </div>
+      <div class="logout-box"><button class="logout-btn">logout</button></div>
+    </div>
+
     <script src="/js/background.js"></script>
-    <!-- <script src="/js/weather.js"></script> -->
+    <script src="/js/weather.js"></script>
     <script src="/js/quote.js"></script>
+    <script src="/js/todo.js"></script>
     <script src="/js/login.js"></script>
     <script src="/js/clock.js"></script>
-    <script src="/js/todo.js"></script>
+    <script src="/js/moreinfo.js"></script>
   </body>
 </html>

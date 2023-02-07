@@ -1,4 +1,4 @@
-const APIKEY = "";
+const APIKEY = "00ff901cb628b8520281869397f5a0ea";
 const weatherinfobox = document.querySelector(".weather");
 
 navigator.geolocation.getCurrentPosition(geosuccess, geoerror);

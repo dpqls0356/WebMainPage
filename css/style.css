@@ -210,32 +210,28 @@ input[type="password"]::placeholder {
 .todo-list {
   overflow-y: scroll;
 }
-@media (max-height: 789px) {
-  .todo-box,
-  .todo-list {
-    height: 40%;
-  }
-}
-@media (min-height: 790px) {
-  .todo-list {
-    height: 60%;
-  }
-}
-@media (min-height: 840px) {
-  .todo-list {
-    height: 70%;
-  }
-}
 .todo-list::-webkit-scrollbar {
   display: none;
 }
 .todo-list li {
   width: 90%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   font-size: 19px;
 }
+.todo-list li > label {
+  width: 10%;
+}
+.todo-list li > div {
+  width: 70%;
+  word-wrap: break-word;
+  height: 38px;
+}
+.todo-list li > button {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .todo-list li:not(.todo-list li:nth-child(1)) {
   margin-top: 10px;
 }
@@ -276,6 +272,49 @@ li > div > a {
   text-decoration: none;
   font-size: 20px;
 }
+/* 화면 창 크기에 따른 변화 */
+
+@media (max-height: 789px) {
+  .todo-box,
+  .todo-list {
+    height: 50%;
+  }
+  .weathertop,
+  .shortcut > p,
+  .todo > p {
+    font-size: 25px;
+  }
+  .weatherbottom {
+    font-size: 20px;
+  }
+  .weatherbottom > img {
+    width: 70px;
+    height: 70px;
+  }
+  li > div > a {
+    font-size: 15px;
+  }
+}
+@media (min-height: 790px) {
+  .todo-list {
+    height: 60%;
+  }
+}
+@media (min-height: 840px) {
+  .todo-list {
+    height: 70%;
+  }
+}
+@media (max-width: 1500px) {
+  .todo-list li > * {
+    font-size: 17px;
+    height: 40px;
+  }
+  .todo-list li > label {
+    margin-right: 3px;
+  }
+}
+
 /* 기타 */
 .background,
 body > div:first-child {
@@ -287,4 +326,10 @@ body > div:first-child {
 
 .hidden {
   display: none;
+}
+
+.logout-box {
+  position: absolute;
+  bottom: 30px;
+  left: 5%;
 }

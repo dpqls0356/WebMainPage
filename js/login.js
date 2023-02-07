@@ -12,6 +12,8 @@ const newUserInputName = createAccountingForm.querySelector(".input-name");
 const newUserInputId = createAccountingForm.querySelector(".input-id");
 const newUserInputPasswd = createAccountingForm.querySelector(".input-passwd");
 const newUserCreateBtn = createAccountingForm.querySelector(".create-btn");
+//로그아웃관련
+const logoutBtn = document.querySelector(".logout-btn");
 //
 var userArray = []; // userArray = [{"name":,"ID":,"passwd":}]
 var userinfo;
@@ -20,15 +22,29 @@ var username;
 var userpasswd;
 const welcomemessage = document.querySelector(".welcomemgs");
 const HIDDENCLASS = "hidden";
+
 //로그인 문제 알림창
 const passwdDoesntMatchNotice = document.querySelector(
   ".passwd-doesnt-match-notice"
 );
+
 const cantFindNotice = document.querySelector(".cant-find-notice");
 //저장된 유저정보 가져오기
 saveduserArray = localStorage.getItem("user");
 if (saveduserArray !== null) {
   userArray = JSON.parse(saveduserArray);
+}
+
+// 새로고침 시 로그아웃을 안한 유저가 있는지 확인 - 로그인 상태 유지
+var loginedUser = localStorage.getItem("currentUser");
+if (loginedUser === null) {
+  loginform.classList.remove(HIDDENCLASS);
+} else {
+  userinfo = userFind();
+  userid = userinfo.ID;
+  username = userinfo.name;
+  userpasswd = userinfo.passwd;
+  printLoginresult(userinfo);
 }
 
 console.log(userArray);
@@ -46,7 +62,10 @@ function handleLoginClick(event) {
 }
 function userFind() {
   for (var i = 0; i < userArray.length; i++) {
-    if (userArray[i].ID === userid && userArray[i].passwd === userpasswd) {
+    if (
+      (userArray[i].ID === userid && userArray[i].passwd === userpasswd) ||
+      userArray[i].ID === loginedUser
+    ) {
       return userArray[i];
     } else if (
       userArray[i].ID === userid &&
@@ -57,6 +76,7 @@ function userFind() {
   }
   return "notuser";
 }
+
 function printLoginresult(printuserinfo) {
   if (printuserinfo === "notuserpasswd") {
     passwdDoesntMatchNotice.classList.remove(HIDDENCLASS);
@@ -68,7 +88,13 @@ function printLoginresult(printuserinfo) {
     userinputpasswd.value = "";
   } else {
     printWelcomMessage(printuserinfo);
+    // 로그인된 계정 저장하도록함
+    loginedUser = printuserinfo.ID;
+    saveloginstate();
   }
+}
+function saveloginstate() {
+  localStorage.setItem("currentUser", loginedUser);
 }
 
 createAccountingbtn.addEventListener("click", handleCreateClick);
@@ -140,5 +166,8 @@ function printWelcomMessage(hellouser) {
 function savedUserInfo() {
   localStorage.setItem("user", JSON.stringify(userArray));
 }
-
-//아이디가 다른 지 비번이 다른 지 확인하기
+logoutBtn.addEventListener("click", handlerLogout);
+function handlerLogout() {
+  localStorage.removeItem("currentUser");
+  window.location.reload();
+}

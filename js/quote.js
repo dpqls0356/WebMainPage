@@ -23,7 +23,7 @@ const quotes = [
   },
   {
     quote:
-      " 네 믿음은 네 생각이 된다.<br>네 생각은 네 말이 된다.<br>네말은 네 행동이 된다 네행동은 네 습관이된다.<br>네 습관은 네 가치가 된다.<br>네 가치는 네 운명이 된다",
+      " 네 믿음은 네 생각이 된다.<br>네 생각은 네 말이 된다.<br>네 말은 네 행동이 된다 네 행동은 네 습관이된다.<br>네 습관은 네 가치가 된다.<br>네 가치는 네 운명이 된다",
     author: "간디",
   },
   {
@@ -56,7 +56,7 @@ const quotebox = document.querySelector(".quote div:nth-child(1)");
 const personbox = document.querySelector(".quote div:nth-child(2)");
 
 printRandomQuote();
-setInterval(printRandomQuote, 5000);
+setInterval(printRandomQuote, 10000);
 
 function printRandomQuote() {
   const quotenumber = parseInt(Math.random() * quotes.length);

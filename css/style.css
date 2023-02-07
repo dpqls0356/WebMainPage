@@ -1,29 +1,52 @@
-body {
-  margin: 0;
+@import "/css/reset.css";
+* {
   color: white;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  display: flex;
   width: 100vw;
   height: 100vh;
+}
+button,
+input {
+  all: unset;
+}
+.main-part {
+  padding: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.hidden {
-  display: none;
-}
-
-.background {
+body > div:first-child {
   position: absolute;
-  top: 0px;
-  z-index: -999;
+  background-color: rgba(0, 0, 0, 0.367);
+  z-index: -98;
   width: 100vw;
   height: 100vh;
 }
-
-.clock {
-  font-size: 40px;
+/* 배경 */
+.background {
+  position: absolute;
+  z-index: -99;
+  width: 100vw;
+  height: 100vh;
+}
+.background img {
+  width: 100%;
+  height: 100%;
 }
 
+/* 시계 */
+.clock {
+  padding-bottom: 30px;
+  font-size: 80px;
+}
+/* 명언 */
 .quote {
   position: absolute;
   bottom: 5%;
@@ -31,4 +54,282 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.quote > div:first-child {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/* 로그인 */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-form div:last-child {
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+/* 로그인 버튼 */
+.login-form div:last-child button {
+  border: none;
+  padding-right: 10px;
+}
+input[type="text"] {
+  padding-right: 10px;
+}
+input[type="password"] {
+  padding-left: 10px;
+}
+input[type="text"],
+input[type="password"] {
+  border: none;
+  border-bottom: 2px solid white;
+  width: 180px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+}
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+/* 계정만들기  */
+.create-accunting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-btn {
+  width: 100%;
+  padding-top: 20px;
+  font-size: 16px;
+  text-align: end;
+}
+.success-create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.return-loginform {
+  width: 100%;
+  padding-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.success-create > div:first-child {
+  text-align: center;
+}
+/* 환영메세지 */
+.welcomemgs {
+  font-size: 30px;
+}
+
+/* 안내문 디자인 */
+.cant-find-notice,
+.passwd-doesnt-match-notice,
+.duplication-id-notice,
+.success-create > div:first-child {
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+@keyframes moveupdown {
+  25% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* moreinfo */
+.more-info {
+  position: absolute;
+  right: 0%;
+  padding: 1.5%;
+  background-color: rgba(0, 0, 0, 0.466);
+  width: 20%;
+  height: 100vh;
+}
+.more-info-btn {
+  padding-top: 30px;
+  font-size: 20px;
+  animation: moveupdown 1s linear infinite;
+}
+.more-info-close-btn {
+  font-size: 25px;
+}
+.more-info > div {
+  padding-left: 5%;
+}
+/* 투두 */
+.todo-box {
+  padding-top: 40px;
+  width: 100%;
+  height: 50%;
+}
+/* todo header */
+.todo {
+  margin-bottom: 20px;
+}
+.todo > p {
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+/* todo input */
+.save-todo {
+  width: 20px;
+  height: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.input-todo {
+  display: flex;
+  align-items: center;
+}
+.input-todo > input {
+  width: 80%;
+}
+/* todo list */
+.todo-list {
+  overflow-y: scroll;
+}
+.todo-list::-webkit-scrollbar {
+  display: none;
+}
+.todo-list li {
+  width: 90%;
+  display: flex;
+  font-size: 19px;
+}
+.todo-list li > label {
+  width: 10%;
+}
+.todo-list li > div {
+  width: 70%;
+  word-wrap: break-word;
+  height: 38px;
+}
+.todo-list li > button {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.todo-list li:not(.todo-list li:nth-child(1)) {
+  margin-top: 10px;
+}
+/* 날씨 */
+.weather {
+  padding-top: 20px;
+  width: 100%;
+}
+.weathertop {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+.weatherbottom {
+  padding-top: 10px;
+  display: flex;
+  font-size: 25px;
+}
+.local {
+  padding-right: 20px;
+}
+.temp {
+  padding-top: 5px;
+}
+/* shortcut */
+.shortcut {
+  padding-top: 20px;
+  width: 100%;
+}
+.shortcut > p {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+.shortcut ul li > div {
+  padding-top: 10px;
+}
+li > div > a {
+  text-decoration: none;
+  font-size: 20px;
+}
+/* 화면 창 크기에 따른 변화 */
+
+@media (max-height: 789px) {
+  .todo-box,
+  .todo-list {
+    height: 50%;
+  }
+  .weathertop,
+  .shortcut > p,
+  .todo > p {
+    font-size: 25px;
+  }
+  .weatherbottom {
+    font-size: 20px;
+  }
+  .weatherbottom > img {
+    width: 70px;
+    height: 70px;
+  }
+  li > div > a {
+    font-size: 15px;
+  }
+}
+@media (min-height: 790px) {
+  .todo-list {
+    height: 60%;
+  }
+}
+@media (min-height: 840px) {
+  .todo-list {
+    height: 70%;
+  }
+}
+@media (max-width: 1500px) {
+  .todo-list li > * {
+    font-size: 17px;
+    height: 40px;
+  }
+  .todo-list li > label {
+    margin-right: 3px;
+  }
+}
+
+/* 기타 */
+.background,
+body > div:first-child {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.logout-box {
+  position: absolute;
+  bottom: 30px;
+  left: 5%;
 }

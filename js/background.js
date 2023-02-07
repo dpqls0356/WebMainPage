@@ -6,7 +6,7 @@ changeBackgroudImg();
 setInterval(changeBackgroudImg, 10000);
 function changeBackgroudImg() {
   const backgroundimgnumber = parseInt(Math.random() * imgcount + 1);
-  backgroundimg.src = `/img/background${backgroundimgnumber}.jpg`;
+  backgroundimg.src = `img/background${backgroundimgnumber}.jpg`;
 
   backgroundbox.appendChild(backgroundimg);
 }

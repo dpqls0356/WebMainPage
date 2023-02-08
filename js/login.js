@@ -54,11 +54,15 @@ function handleLoginClick(event) {
   passwdDoesntMatchNotice.classList.add(HIDDENCLASS);
   cantFindNotice.classList.add(HIDDENCLASS);
   event.preventDefault();
-  userid = userinputid.value;
-  userpasswd = userinputpasswd.value;
-  //id와 passwd일치 확인하기
-  userinfo = userFind();
-  printLoginresult(userinfo);
+  if (userinputid.value === "" || userinputpasswd.value === "") {
+    window.location.reload();
+  } else {
+    userid = userinputid.value;
+    userpasswd = userinputpasswd.value;
+    //id와 passwd일치 확인하기
+    userinfo = userFind();
+    printLoginresult(userinfo);
+  }
 }
 function userFind() {
   for (var i = 0; i < userArray.length; i++) {
@@ -112,28 +116,41 @@ function handleCreateClick(event) {
 newUserCreateBtn.addEventListener("click", handlerCreateBtn);
 function handlerCreateBtn(event) {
   event.preventDefault();
-  const newUserInfo = {
-    name: newUserInputName.value,
-    ID: newUserInputId.value,
-    passwd: newUserInputPasswd.value,
-  };
-  console.log(userArray);
-  if (userArray.length === 0) {
-    console.log("null");
-    successCreateAccounting(newUserInfo);
+  if (
+    newUserInputName.value === "" ||
+    newUserInputId.value === "" ||
+    newUserInputPasswd.value === ""
+  ) {
+    document.querySelector(".enter-all-notice").classList.remove(HIDDENCLASS);
+    newUserInputId.value = "";
+    newUserInputName.value = "";
+    newUserInputPasswd.value = "";
   } else {
-    const checkobject = userArray.filter((item) => item.ID === newUserInfo.ID);
-    if (checkobject.length === 0) {
-      //추가되었다는 창 보여주기 + 로그인으로 돌아가는 버튼
+    const newUserInfo = {
+      name: newUserInputName.value,
+      ID: newUserInputId.value,
+      passwd: newUserInputPasswd.value,
+    };
+    console.log(userArray);
+    if (userArray.length === 0) {
+      console.log("null");
       successCreateAccounting(newUserInfo);
     } else {
-      //중복되는 아이디로 다시 입력하라고 하기
-      document
-        .querySelector(".duplication-id-notice")
-        .classList.remove(HIDDENCLASS);
-      newUserInputId.value = "";
-      newUserInputName.value = "";
-      newUserInputPasswd.value = "";
+      const checkobject = userArray.filter(
+        (item) => item.ID === newUserInfo.ID
+      );
+      if (checkobject.length === 0) {
+        //추가되었다는 창 보여주기 + 로그인으로 돌아가는 버튼
+        successCreateAccounting(newUserInfo);
+      } else {
+        //중복되는 아이디로 다시 입력하라고 하기
+        document
+          .querySelector(".duplication-id-notice")
+          .classList.remove(HIDDENCLASS);
+        newUserInputId.value = "";
+        newUserInputName.value = "";
+        newUserInputPasswd.value = "";
+      }
     }
   }
 }

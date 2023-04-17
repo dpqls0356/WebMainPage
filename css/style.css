@@ -1,4 +1,3 @@
-@import "/css/reset.css";
 * {
   color: white;
   box-sizing: border-box;
@@ -371,7 +370,8 @@ li > div > a {
 }
 @media (min-height: 840px) {
   .todo-list {
-    height: 70%;
+    height: 68%;
+    padding-top: 10px;
   }
 }
 @media (max-width: 1500px) {

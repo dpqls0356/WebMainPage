@@ -26,5 +26,4 @@
 // }
 
 
-
 // background를 미리 하나 깔아놓고 일정시간마다 background를 추가해주기

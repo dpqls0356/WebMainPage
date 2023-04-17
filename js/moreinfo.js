@@ -14,7 +14,11 @@ moreInfoBtn.addEventListener("click", handlerMoreInfo);
 // 더보기 창 닫기
 function closerMoreInfo(event) {
   event.preventDefault();
-  moreInfo.classList.add("hidden");
+  moreInfo.classList.add("remove-more-info");
+  setTimeout(() => {
+    moreInfo.classList.add("hidden");
+    moreInfo.classList.remove("remove-more-info");
+  }, 1000);
   moreInfoBtn.classList.remove("hidden");
 }
 moreInfoCloserBtn.addEventListener("click", closerMoreInfo);

@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 body {
+  background-color: black;
   overflow: hidden;
   display: flex;
   width: 100vw;
@@ -36,10 +37,41 @@ body > div:first-child {
   width: 100vw;
   height: 100vh;
 }
-.background img {
+.background img,.prebackground img {
   width: 100%;
   height: 100%;
 }
+.prebackground{
+  position: absolute;
+  z-index: -100;
+  width: 100vw;
+  height: 100vh;
+}
+.remove-prebackground{
+  animation: removePrebackground 2.1s;
+}
+@keyframes showBackground {
+  0% {
+    transform: rotateX(80deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+@keyframes removePrebackground {
+  0%{
+    opacity: 1;
+  }
+  99%{
+    opacity: 0.4;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
 
 /* 시계 */
 .clock {

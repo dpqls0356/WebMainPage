@@ -242,6 +242,11 @@ input[type="password"]::placeholder {
 .more-info > div {
   padding-left: 5%;
 }
+
+/*hover*/
+.save-todo:hover,.more-info-close-btn:hover,.shortcut  a:hover{
+  color: rgb(255, 51, 157);
+}
 /* 투두 */
 .todo-box {
   padding-top: 40px;
